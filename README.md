@@ -1,2 +1,7 @@
 # Ai_Assistant
-Making an Easy Ai Assistant
+
+Packages that need to be installed:
+- Speech Recognition
+- gTTs
+- pyaudio
+- playsound3
