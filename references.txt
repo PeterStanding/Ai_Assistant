@@ -1,0 +1,7 @@
+--> Baseline Speaking and Microphone Connection
+Main Speak and Get Audio taken from Tech with Tim YT Chanel -- https://www.youtube.com/watch?v=zqEoTxkh95M
+
+--> PokeAPI connection Useful Links
+Connecting to an API for Pokemon Information -- https://www.youtube.com/watch?v=JVQNywo4AbU
+Also used: https://medium.com/@mohamed.mywork/learn-apis-with-pok%C3%A9mon-and-python-7003b35b5ba
+
