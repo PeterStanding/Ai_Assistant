@@ -1,0 +1,11 @@
+Packages that need to be installed:
+
+Speech Recognition
+gTTs
+pyaudio
+playsound3
+requests
+openmeteo_requests
+requests_cache
+retry_requests
+pandas
