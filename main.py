@@ -25,7 +25,7 @@ def get_audio():
         said = ""
         try:
             said = r.recognize_google(audio)
-            print(said)
+            #print(said)
         except Exception as e:
             print("Exception: " + str(e))
 
@@ -33,9 +33,14 @@ def get_audio():
 
 text = get_audio()
 
-if "hello" in text:
+if "hello" in text.lower():
     speak("Hello, I am your AI Assistant.")
-if "test" in text:
+if "test" in text.lower():
     speak("Test Was Successful!")
-if "pokemon" in text:
-    pokemonSearch.get_pokemon_info(text)
+if "pokémon" in text.lower():
+    speak("Which Pokémon would you like?")
+    input = get_audio()
+    result = pokemonSearch.get_pokemon_info(input)
+    speak(f"Name: {result["name"].capitalize()}")
+    speak(f"Dex No: {result["id"]}")
+    speak(f"Types: {', '.join(result['types'])}")
