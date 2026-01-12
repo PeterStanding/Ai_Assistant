@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup
 import speech_recognition as sr
 from gtts import gTTS
 
-import pokemonSearch
+import pokemonSearch, weather
 
 
 def speak(audio):
@@ -44,3 +44,17 @@ if "pokémon" in text.lower():
     speak(f"Name: {result["name"].capitalize()}")
     speak(f"Dex No: {result["id"]}")
     speak(f"Types: {', '.join(result['types'])}")
+if "weather" in  text.lower():
+    speak("Which City would you like to look at?")
+    input = get_audio()
+    result = weather.get_weather(input)
+    speak(f"\nCurrent time: {result['time']}")
+    speak(f"Current temperature: {result['temperature']:.2f}°C")
+    if result["is_day"] == 1:
+        speak(f"Currently There is daylight")
+    else:
+        speak(f"Currently There is no daylight")
+    speak(f"Current precipitation: {result['precipitation']}")
+    speak(f"Current wind speed: {result['wind_speed']:.2f} mph")
+    speak(f"Current wind direction: {result['wind_direction']:.2f}")
+    speak(f"Current weather code: {result['weather_code']}")

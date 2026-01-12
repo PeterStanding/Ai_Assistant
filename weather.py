@@ -94,7 +94,6 @@ def convert_weather_code(weather_code, is_day):
             return "Light Thunderstorm with hail"
         case 99:
             return "Thunderstorm with Hail"
-
 def get_weather(city):
 
     loc = get_city_coordinates(city)
@@ -129,7 +128,16 @@ def get_weather(city):
     current_wind_speed = current.Variables(3).Value()
     current_wind_direction = current.Variables(4).Value()
     current_weather_code = current.Variables(5).Value()
-
+    return {
+        "time": convert_time(current.Time()),
+        "temperature": current_temperature,
+        "is_day": current_is_day,
+        "precipitation": current_precipitation,
+        "wind_speed": current_wind_speed,
+        "wind_direction": current_wind_direction,
+        "weather_code": convert_weather_code(current_weather_code, current_is_day)
+    }
+    '''
     print(f"\nCurrent time: {convert_time(current.Time())}")
     print(f"Current temperature: {current_temperature:.2f}°C")
     if current_is_day == 1:
@@ -141,5 +149,6 @@ def get_weather(city):
     print(f"Current wind_direction: {current_wind_direction:.2f}")
     print(f"Current weather_code: {current_weather_code}")
     print(f"Current weather_code: {convert_weather_code(current_weather_code, current_is_day)}")
-
-get_weather("London")
+    '''
+if __name__ == '__main__':
+    get_weather(input)
