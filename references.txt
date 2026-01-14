@@ -18,3 +18,7 @@ https://tinyurl.com/yutkrtr8
 --> Flet App Dev
 https://flet.dev/
 https://www.facebook.com/reel/1178035417849926
+
+--> Ollama
+https://www.youtube.com/watch?v=UtSSMs6ObqY
+https://ollama.com/library
