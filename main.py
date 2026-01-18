@@ -9,8 +9,7 @@ from bs4 import BeautifulSoup
 import speech_recognition as sr
 from gtts import gTTS
 import ollama
-
-import pokemonSearch, weather
+import pokemonSearch, weather, qr_code
 
 #Speak for the Assistant to respond to the user
 def speak(audio):
@@ -51,6 +50,13 @@ while True:
     #Exit condition for the Assistant
     if text.lower() in exit_conditions:
         break
+    if "qrcode" in text.lower():
+        speak("Which website would you like a QR Code for?")
+        loc = get_audio()
+        speak("What would you like it to be Saved as?")
+        fName = get_audio()
+        qr_code.generateQR(loc, fName)
+        speak("QR Code has been generated and Saved as:", fName)
     if "ollama" in text.lower():
         speak("What would you like to search Ollama?")
         q = get_audio()
