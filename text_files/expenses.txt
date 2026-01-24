@@ -1,0 +1,9 @@
+Monthly_income: £2500
+Rent: £1000
+Utilities: £200
+Food: £500
+Spotify: £19.99
+Amazon: £8.99
+Holiday_fund: £100
+Investments: £100
+Coffee: £4.99
