@@ -13,5 +13,6 @@ openai
 flet
 qrcode
 PIL
+datetime
 ----
 Ollama

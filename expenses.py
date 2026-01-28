@@ -43,3 +43,4 @@ def total_remaining():
             remaining -= curr
     print("Total remaining", remaining)
 #if __name__ == '__main__':
+
