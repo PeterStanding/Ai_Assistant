@@ -9,7 +9,10 @@ from bs4 import BeautifulSoup
 import speech_recognition as sr
 from gtts import gTTS
 import ollama
-import pokemonSearch, weather, qr_code
+import pokemonSearch, weather, qr_code, reminders, expenses
+
+months = ["January", "February", "March", "April", "May", "June",
+          "July", "August","September", "October", "November", "December"]
 
 #Speak for the Assistant to respond to the user
 def speak(audio):
@@ -87,3 +90,46 @@ while True:
         speak(f"Current wind speed: {result['wind_speed']:.2f} mph")
         speak(f"Current wind direction: {result['wind_direction']:.2f}")
         speak(f"Current weather code: {result['weather_code']}")
+    if "reminder" in  text.lower():
+        speak("What would you like to be reminded about?")
+        input = get_audio()
+        if "add" in input.lower():
+            speak("What would you like to add?")
+            rem = get_audio()
+            speak("When would you like to set it for?")
+            date = get_audio()
+            reminders.add_reminder(date, rem)
+            speak("Perfect, the Reminder has been set")
+        elif "remove" in input.lower():
+            speak("Which reminder would you like to remove?")
+            rem = get_audio()
+            reminders.delete_reminder(rem)
+            speak("Reminder has been removed")
+        elif "today" in input.lower():
+            today = reminders.reminders_today()
+            speak("All reminders for today")
+            for t in today:
+                speak(t)
+        elif input in months:
+            total = reminders.reminders_month(input)
+            speak(f"All reminders for {input}")
+            for t in total:
+                speak(t)
+    if "expenses" in text.lower():
+        speak("What would you like todo with the expenses?")
+        todo = get_audio()
+        if "add" in todo.lower():
+            speak("Which Expense would you like to add?")
+            expense = get_audio()
+            speak("How much is it worth?")
+            cost = get_audio()
+            expense.add_expense(expense, cost)
+            speak("Completed, Expense has been added")
+        if "delete" in  todo.lower():
+            speak("Which Expense would you like to Remove?")
+            expense = get_audio()
+            expense.delete_expense(expense)
+            speak("Completed, Expense has been removed")
+        if "total" in todo.lower():
+            t = expenses.total_remaining()
+            speak(f"Total Remaining per month: {t}")

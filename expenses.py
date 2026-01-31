@@ -5,6 +5,7 @@
 # Expenses file Location
 location = "text_files/expenses.txt"
 dictionary = {}
+name, cost = "", ""
 
 def format_file():
     with open(location,'r') as file:
@@ -14,12 +15,10 @@ def format_file():
                 curr = line.replace('Â£', '').strip().replace('\n', ' ').replace(":", "").split(" ")
                 dictionary[curr[0]] = curr[1]
     return dictionary
-
 def add_expense(name, cost):
     with open(location,'a') as file:
         file.write("\n")
         file.write(name+": Â£"+cost)
-
 def delete_expense(name):
     expenses = format_file()
     try:
@@ -30,7 +29,6 @@ def delete_expense(name):
     with open(location,'w') as file:
         for key, value in expenses.items():
             file.write(key+": Â£"+value+"\n")
-
 def total_remaining():
     expenses = format_file()
     remaining = float(expenses['Monthly_income'])
@@ -42,5 +40,3 @@ def total_remaining():
         else:
             remaining -= curr
     print("Total remaining", remaining)
-#if __name__ == '__main__':
-

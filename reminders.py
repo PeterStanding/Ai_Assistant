@@ -86,6 +86,3 @@ def reminders_month(month):
         else:
             pass
     return output
-
-
-print(reminders_today())
