@@ -9,10 +9,12 @@ from bs4 import BeautifulSoup
 import speech_recognition as sr
 from gtts import gTTS
 import ollama
-import pokemonSearch, weather, qr_code, reminders, expenses
+import pokemonSearch, weather, qr_code, reminders, expenses, games
 
+#Arrays used for looping in the Main Logic
 months = ["January", "February", "March", "April", "May", "June",
           "July", "August","September", "October", "November", "December"]
+games = ["Guess Number"]
 
 #Speak for the Assistant to respond to the user
 def speak(audio):
@@ -133,3 +135,12 @@ while True:
         if "total" in todo.lower():
             t = expenses.total_remaining()
             speak(f"Total Remaining per month: {t}")
+    if "game" in text.lower():
+        speak("What game would you like to play?")
+        for g in games:
+            speak(g)
+        game_choice = get_audio()
+        if "guess number" in game_choice.lower():
+            speak("I shall think of a random number between 1 and What?")
+            higher = get_audio()
+            games.guess_number(higher)
